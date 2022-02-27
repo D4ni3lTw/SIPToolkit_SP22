@@ -5,3 +5,4 @@ def Tftp_enum():
     ip_addr=str(ip)
     result=nm.scan(ip_addr,'69','-sU --script tftp-enum')
     return result
+print('hello')
