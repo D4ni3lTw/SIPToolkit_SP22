@@ -1,3 +1,4 @@
+from array import array
 import nmap
 nm=nmap.PortScanner()
 
@@ -19,9 +20,12 @@ def getdata():# Get data from json result
         state=data['scan']['192.168.50.145']['udp'][69]['state']
         service=data['scan']['192.168.50.145']['udp'][69]['name']
         file_enum=data['scan']['192.168.50.145']['udp'][69]['script']['tftp-enum']
+        file_enum=file_enum.rstrip('\n')
+        file_enum=file_enum.lstrip('\n')
         print("Command: ",command_line)
         print("\nPort is running at: ",port)
         print("State is: ",state)
         print("Service is running: ",service)
         print("List file:",file_enum)
 getdata()
+
