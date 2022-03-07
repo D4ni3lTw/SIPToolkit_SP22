@@ -1,8 +1,9 @@
-from array import array
 import nmap
+import pyfiglet
+
 nm=nmap.PortScanner()
 
-print("_____TFTP-enumeration_____")
+print(pyfiglet.figlet_format("TFTP Enumeration"))
 def Tftp_enum():#Scan target
     ip=input("Enter ip target:")
     ip_addr=str(ip)
@@ -11,6 +12,7 @@ def Tftp_enum():#Scan target
 
 def getdata():# Get data from json result
     data=Tftp_enum()
+    print("Enumeration Info: ",data)
     if data is None:
         print("No Data!!!")
     else:
