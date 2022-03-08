@@ -1,13 +1,6 @@
 import sys
-from modules.initial import clear, welcome_screen
-from modules.ultilities import term_size
 from PyInquirer import style_from_dict, prompt
 from examples import custom_style_2
-
-def loadscreen():
-    clear.clrscr()
-    welcome_screen.banner('','',term_size.get_terminal_size("width"))
-
 def main_choice():
     choice_prompt = {
         'type': 'list',
@@ -28,37 +21,34 @@ def step_choice():
     answers = prompt(step_prompt, style=custom_style_2)
     return answers['step']
 
-def print_menu():
-    menu = ("\x1B[3mThis tool is design to be capable of help pentester with these main step:\x1B[0m\n"
+def menu():
+    menu_info = ("\x1B[3mThis tool is design to be capable of help pentester with these main step:\x1B[0m\n"
             "-Enumeration/ Scanning\n"
             "-Vulnerable assessment\n"
             "-Exploit\n"
             "-Generate a report\n")
-    print(menu)
+    print(menu_info)
     choose = main_choice()
     if (choose == '1. Run throught four step'):
-        print("Run throught four step")
-        return 1
+        print("Do first choice")
     
     elif (choose == '2. Run selected step'):
         step = step_choice()
         if (step == '1. Enumeration/Scanning'):
-            print("Enumeration")
-            return 21
+            print("Enum")
         elif (step == '2. Vulnerable Assessment'):
             print("Vulnerable Assessment")
-            return 22
         elif (step == '3. Exploit'):
             print("Exploit")
-            return 23
         elif (step == '4. Generate a Report'):
             print("Generate a Report")
-            return 24
 
     elif (choose == '3. Option'):
         print("Do third choice")
-        return 3
 
     elif (choose == '4. Dung Chon Em'):
         print("Hu qua")
-        return 4
+
+
+if __name__ == "__main__":
+    print_menu()
