@@ -1,2 +1,2 @@
-def scanning():
-    print('step_1')
+def scanning(ip):
+    print(str(ip))

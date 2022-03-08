@@ -18,7 +18,8 @@ def main():
 
     #Main program function
     try:
-        scanning()
+        ipaddr = input("Enter your choice: ")
+        scanning(ipaddr)
         vulnassesst()
         exploit()
         report()
