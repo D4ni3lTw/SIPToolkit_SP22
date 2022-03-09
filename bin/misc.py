@@ -39,7 +39,7 @@ def print_menu():
     if (choose == '1. Run throught four step'):
         print("Run throught four step")
         return 1
-    
+
     elif (choose == '2. Run selected step'):
         step = step_choice()
         if (step == '1. Enumeration/Scanning'):
