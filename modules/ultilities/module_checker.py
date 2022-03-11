@@ -1,11 +1,11 @@
 def ensure_enviroment():
     try:
         import sys
-        import math
         import nmap
-        # import wireshark
-        print('OK')
-    except ModuleNotFoundError or ImportError as ee:
-        print('This script can only be run in blabla environment : {0}'.format(ee.msg), file=sys.stderr)
-        exit(1)
-
+        import py_console
+        import pyfiglet
+        import PyInquirer
+    except ModuleNotFoundError or ImportError:
+        print("\033[1mYour system is missing required modules to run this program!!\nTry using these command to resolve the problem!!!\033[0m",
+                "\n\033[93mpip install nmap \npip install py_console \npip install pyfiglet \npip install PyInquirer\033[0m")
+        sys.exit(1)

@@ -10,8 +10,8 @@ import sys
 def main_flow(choice):
     if (choice == 1):
         try:
-            ipaddr = choice("Enter your IP address: ")
-            scanning(ipaddr)
+            ip = input("Enter your IP address: ")
+            scanning(ip)
             vulnassesst()
             exploit()
             report()
