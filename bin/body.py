@@ -26,7 +26,6 @@ def main_flow(choice):
 
     if (choice == 21):
         try:
-            print('Enum_step')
             ip = str(input("Enter your IP address: "))
             scanning(str(ip))
         except Exception as e:
