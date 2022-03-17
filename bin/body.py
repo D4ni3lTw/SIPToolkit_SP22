@@ -38,7 +38,9 @@ def main_flow(choice):
 
     if (choice == 22):
         try:
-            print('VulAss_step')
+            vendor = str(input("Enter vendor: "))
+            product = str(input("Enter product: "))
+            vulnassesst(vendor,product)
         except Exception as e:
             console.error("An Error Occurred!!!")
             console.error(e)
