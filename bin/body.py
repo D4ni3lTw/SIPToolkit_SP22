@@ -6,7 +6,6 @@ from bin.vulnassesst import *
 from py_console import console
 import sys
 
-
 def main_flow(choice):
     if (choice == 1):
         try:
@@ -62,7 +61,7 @@ def main_flow(choice):
 
     if (choice == 24):
         try:
-            print('Report_step')
+            report("/t")
         except Exception as e:
             console.error("An Error Occurred!!!")
             console.error(e)
