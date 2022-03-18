@@ -6,15 +6,14 @@ from bin.vulnassesst import *
 from py_console import console
 import sys
 
-
 def main_flow(choice):
     if (choice == 1):
         try:
             ip = str(input("Enter your IP address: "))
             scandata = scanning(str(ip))
-            # vulnassesst()
+            vulndata = vulnassesst('signalwire', 'freeswitch')
             exploit()
-            report()
+            report(scandata,vulndata)
             console.success("Running cycle complete successfully!")
         except Exception as e:
             console.error("An Error Occurred!!!")
@@ -62,7 +61,7 @@ def main_flow(choice):
 
     if (choice == 24):
         try:
-            print('Report_step')
+            report("/t")
         except Exception as e:
             console.error("An Error Occurred!!!")
             console.error(e)
