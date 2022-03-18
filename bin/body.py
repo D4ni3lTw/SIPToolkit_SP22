@@ -12,7 +12,6 @@ def main_flow(choice):
         try:
             ip = str(input("Enter your IP address: "))
             scandata = scanning(str(ip))
-            print(scandata)
             # vulnassesst()
             exploit()
             report()
