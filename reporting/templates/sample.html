@@ -67,8 +67,13 @@
             border-top: 3px solid #bbb;
         }
         
+        .title {
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        
         .title,
-        .systemInfo {
+        .content {
             font-weight: bold;
         }
         
@@ -95,22 +100,30 @@
         <div class="grid-item info">{{info_count}}</div>
     </div>
 
-    <div class="scanInformation">
-        <p class="title">Scan Infomation</p>
-        <hr class="solid">
-        <p>Start time: <span class="systemInfo">{{start_time}}</span> </p>
-        <p>End time: <span class="systemInfo">{{end_time}}</span> </p>
+    <div className="generalInfomation">
+        <div class="scanInformation">
+            <p class="title">Scan Infomation</p>
+            <hr class="solid">
+            <p>Start time: <span class="content">{{start_time}}</span> </p>
+            <p>Elapsed: <span class="content">{{elapsed}}</span> </p>
+        </div>
+        {{general_info}}
+
+        <!-- <div class="hostInfomation">
+            <p class="title">Host Infomation</p>
+            <hr class="solid">
+            <p>IP: <span class="content">{{ip_addr}} </span></p>
+            <p>Host name: <span class="content">{{host_name}}</span></p>
+        </div>
+
+        <div class="portScanning">
+            <p class="title">Port Scanning</p>
+            <hr class="solid"> {{port_scanning}}
+        </div> -->
     </div>
 
-    <div class="hostInfomation">
-        <p class="title">Host Infomation</p>
-        <hr class="solid">
-        <p>IP: <span class="systemInfo">{{ip_addr}} </span></p>
-        <p>OS: <span class="systemInfo">{{os_info}}</span></p>
-    </div>
 
-
-    <div class="vulnerabilities">
+    <div class="vulnerabilitiesInformation">
         <h2 class="header">Vulnerabilities</h2>
         {{data}}
     </div>
