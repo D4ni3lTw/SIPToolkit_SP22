@@ -31,9 +31,13 @@
         
         .grid-container {
             display: grid;
-            grid-template-columns: auto auto auto auto auto;
+            grid-template-columns: auto;
             /* background-color: #2196F3; */
             padding: 10px;
+        }
+        
+        .general {
+            background-color: grey;
         }
         
         .critical {
@@ -93,11 +97,12 @@
     <h1>Pentest Report</h1>
 
     <div class="grid-container">
-        <div class="grid-item critical">{{critical_count}}</div>
+        <!-- <div class="grid-item critical">{{critical_count}}</div>
         <div class="grid-item high">{{high_count}}</div>
         <div class="grid-item medium">{{medium_count}}</div>
         <div class="grid-item low">{{low_count}}</div>
-        <div class="grid-item info">{{info_count}}</div>
+        <div class="grid-item info">{{info_count}}</div> -->
+        <div class="grid-item general">{{count}}</div>
     </div>
 
     <div className="generalInfomation">
@@ -105,32 +110,15 @@
             <p class="title">Scan Infomation</p>
             <hr class="solid">
             <p>Start time: <span class="content">{{start_time}}</span> </p>
-            <p>Elapsed: <span class="content">{{elapsed}}</span> </p>
+            <p>Elapsed: <span class="content">{{elapsed}}ms</span> </p>
         </div>
-        {{general_info}}
-
-        <!-- <div class="hostInfomation">
-            <p class="title">Host Infomation</p>
-            <hr class="solid">
-            <p>IP: <span class="content">{{ip_addr}} </span></p>
-            <p>Host name: <span class="content">{{host_name}}</span></p>
-        </div>
-
-        <div class="portScanning">
-            <p class="title">Port Scanning</p>
-            <hr class="solid"> {{port_scanning}}
-        </div> -->
+        {{scanning_data}}
     </div>
-
 
     <div class="vulnerabilitiesInformation">
         <h2 class="header">Vulnerabilities</h2>
-        {{data}}
+        {{vul_data}}
     </div>
-
-
-
-    {{ report_data }}
 </body>
 
 </html>
