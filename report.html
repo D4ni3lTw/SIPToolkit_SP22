@@ -24,159 +24,100 @@
             padding: 10px 20px;
         }
         
-        h1 {
+        h1,
+        h2 {
             text-align: center;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            /* background-color: #2196F3; */
+            padding: 10px;
+        }
+        
+        .critical {
+            background-color: #b70000;
+        }
+        
+        .high {
+            background-color: #ff0000;
+        }
+        
+        .medium {
+            background-color: #ff8300;
+        }
+        
+        .low {
+            background-color: #faff00;
+        }
+        
+        .info {
+            background-color: #00a9ff;
+        }
+        
+        .grid-item {
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+        
+        hr.solid {
+            border-top: 3px solid #bbb;
+        }
+        
+        .title,
+        .systemInfo {
+            font-weight: bold;
+        }
+        
+        .vulnerability {
+            display: grid;
+            grid-template-columns: auto;
+            /* background-color: #2196F3; */
+            padding: 10px;
         }
     </style>
 </head>
 
+
+
 <body>
 
     <h1>Pentest Report</h1>
-    <div>
-        <style type="text/css">
-</style>
-<table id="T_39c8b">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_39c8b_level0_col0" class="col_heading level0 col0" >result</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_39c8b_level0_row0" class="row_heading level0 row0" >ip_addr</th>
-      <td id="T_39c8b_row0_col0" class="data row0 col0" >192.168.10.1</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row1" class="row_heading level0 row1" >vulnerable_configuration</th>
-      <td id="T_39c8b_row1_col0" class="data row1 col0" >cpe:2.3:a:signalwire:freeswitch:*:*:*:*:*:*:*:*</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row2" class="row_heading level0 row2" >vulnerable_configuration_cpe_2_2</th>
-      <td id="T_39c8b_row2_col0" class="data row2 col0" ></td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row3" class="row_heading level0 row3" >vulnerable_product</th>
-      <td id="T_39c8b_row3_col0" class="data row3 col0" >cpe:2.3:a:signalwire:freeswitch:*:*:*:*:*:*:*:*</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row4" class="row_heading level0 row4" >Modified</th>
-      <td id="T_39c8b_row4_col0" class="data row4 col0" >2021-10-22T15:11:00</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row5" class="row_heading level0 row5" >Published</th>
-      <td id="T_39c8b_row5_col0" class="data row5 col0" >2021-10-18T17:15:00</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row6" class="row_heading level0 row6" >authentication</th>
-      <td id="T_39c8b_row6_col0" class="data row6 col0" >NONE</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row7" class="row_heading level0 row7" >complexity</th>
-      <td id="T_39c8b_row7_col0" class="data row7 col0" >LOW</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row8" class="row_heading level0 row8" >vector</th>
-      <td id="T_39c8b_row8_col0" class="data row8 col0" >NETWORK</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row9" class="row_heading level0 row9" >assigner</th>
-      <td id="T_39c8b_row9_col0" class="data row9 col0" >cve@mitre.org</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row10" class="row_heading level0 row10" >capec</th>
-      <td id="T_39c8b_row10_col0" class="data row10 col0" >None</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row11" class="row_heading level0 row11" >cvss</th>
-      <td id="T_39c8b_row11_col0" class="data row11 col0" >5.000000</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row12" class="row_heading level0 row12" >impactScore</th>
-      <td id="T_39c8b_row12_col0" class="data row12 col0" >2.900000</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row13" class="row_heading level0 row13" >exploitabilityScore</th>
-      <td id="T_39c8b_row13_col0" class="data row13 col0" >10.000000</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row14" class="row_heading level0 row14" >cvss-time</th>
-      <td id="T_39c8b_row14_col0" class="data row14 col0" >2021-10-22T15:11:00</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row15" class="row_heading level0 row15" >cvss-vector</th>
-      <td id="T_39c8b_row15_col0" class="data row15 col0" >AV:N/AC:L/Au:N/C:P/I:N/A:N</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row16" class="row_heading level0 row16" >cwe</th>
-      <td id="T_39c8b_row16_col0" class="data row16 col0" >CWE-909</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row17" class="row_heading level0 row17" >id</th>
-      <td id="T_39c8b_row17_col0" class="data row17 col0" >CVE-2021-36513</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row18" class="row_heading level0 row18" >availability</th>
-      <td id="T_39c8b_row18_col0" class="data row18 col0" >NONE</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row19" class="row_heading level0 row19" >confidentiality</th>
-      <td id="T_39c8b_row19_col0" class="data row19 col0" >HIGH</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row20" class="row_heading level0 row20" >integrity</th>
-      <td id="T_39c8b_row20_col0" class="data row20 col0" >NONE</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row21" class="row_heading level0 row21" >attackvector</th>
-      <td id="T_39c8b_row21_col0" class="data row21 col0" >NETWORK</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row22" class="row_heading level0 row22" >attackcomplexity</th>
-      <td id="T_39c8b_row22_col0" class="data row22 col0" >LOW</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row23" class="row_heading level0 row23" >privilegesrequired</th>
-      <td id="T_39c8b_row23_col0" class="data row23 col0" >NONE</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row24" class="row_heading level0 row24" >userinteraction</th>
-      <td id="T_39c8b_row24_col0" class="data row24 col0" >NONE</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row25" class="row_heading level0 row25" >scope</th>
-      <td id="T_39c8b_row25_col0" class="data row25 col0" >UNCHANGED</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row26" class="row_heading level0 row26" >cvss3</th>
-      <td id="T_39c8b_row26_col0" class="data row26 col0" >7.500000</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row27" class="row_heading level0 row27" >impactScore3</th>
-      <td id="T_39c8b_row27_col0" class="data row27 col0" >3.600000</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row28" class="row_heading level0 row28" >exploitabilityScore3</th>
-      <td id="T_39c8b_row28_col0" class="data row28 col0" >3.900000</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row29" class="row_heading level0 row29" >cvss3-vector</th>
-      <td id="T_39c8b_row29_col0" class="data row29 col0" >CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row30" class="row_heading level0 row30" >last-modified</th>
-      <td id="T_39c8b_row30_col0" class="data row30 col0" >2021-10-22T15:11:00</td>
-    </tr>
-    <tr>
-      <th id="T_39c8b_level0_row31" class="row_heading level0 row31" >summary</th>
-      <td id="T_39c8b_row31_col0" class="data row31 col0" >An issue was discovered in function sofia_handle_sip_i_notify in sofia.c in SignalWire freeswitch before 1.10.6, may allow attackers to view sensitive information due to an uninitialized value.</td>
-    </tr>
-  </tbody>
-</table>
 
+    <div class="grid-container">
+        <div class="grid-item critical"></div>
+        <div class="grid-item high"></div>
+        <div class="grid-item medium"></div>
+        <div class="grid-item low"></div>
+        <div class="grid-item info"></div>
     </div>
 
+    <div class="scanInformation">
+        <p class="title">Scan Infomation</p>
+        <hr class="solid">
+        <p>Start time: <span class="systemInfo">2021-10-22T15:11:00</span> </p>
+        <p>End time: <span class="systemInfo">2021-10-22T15:11:00</span> </p>
+    </div>
+
+    <div class="hostInfomation">
+        <p class="title">Host Infomation</p>
+        <hr class="solid">
+        <p>IP: <span class="systemInfo">192.168.10.1 </span></p>
+        <p>OS: <span class="systemInfo">linux</span></p>
+    </div>
+
+
+    <div class="vulnerabilities">
+        <h2 class="header">Vulnerabilities</h2>
+        <div class="vulnerability critical">vul01</div>
+    </div>
+
+
+
+    
 </body>
 
 </html>
