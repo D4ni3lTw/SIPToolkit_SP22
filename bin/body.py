@@ -10,9 +10,9 @@ import sys
 def main_flow(choice):
     if (choice == 1):
         try:
-            ip = input("Enter your IP address: ")
-            scanning(ip)
-            vulnassesst()
+            ip = str(input("Enter your IP address: "))
+            scandata = scanning(str(ip))
+            # vulnassesst()
             exploit()
             report()
             console.success("Running cycle complete successfully!")
