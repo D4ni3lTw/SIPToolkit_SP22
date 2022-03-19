@@ -9,11 +9,11 @@ import sys
 def main_flow(choice):
     if (choice == 1):
         try:
-            ip = input("Enter your IP address: ")
-            scanning(ip)
-            vulnassesst()
+            ip = str(input("Enter your IP address: "))
+            scandata = scanning(str(ip))
+            vulndata = vulnassesst('signalwire', 'freeswitch')
             exploit()
-            report()
+            report(scandata,vulndata)
             console.success("Running cycle complete successfully!")
         except Exception as e:
             console.error("An Error Occurred!!!")

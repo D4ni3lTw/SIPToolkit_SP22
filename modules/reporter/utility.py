@@ -16,7 +16,7 @@ def get_scanning_data():
 
 
 def get_template():
-    env = Environment(loader=FileSystemLoader('reporting/templates'))
+    env = Environment(loader=FileSystemLoader('modules/reporter/templates'))
     return env.get_template('sample.html')
 
 
