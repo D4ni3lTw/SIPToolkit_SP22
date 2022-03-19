@@ -26,7 +26,7 @@ def render_vulnerability(vul, total):
 
 
 def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, scanstats):
-    info_by_port = scanning_data['scan'][ip_addr]
+    info_by_port = scanning_data['scan'][str(ip_addr)]
     host_name = info_by_port['hostnames'][0]['name']
     os = info_by_port['osmatch'][0]['name']
     status = info_by_port['status']['state']
