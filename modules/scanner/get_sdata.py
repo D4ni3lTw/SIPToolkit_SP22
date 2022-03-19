@@ -12,7 +12,8 @@ def data_parse(ips, data):
     for singleip in ip:
         if scan_data is not None:
             hostname = scan_data[str(singleip)]['hostnames'][0]['name']
-            macaddr = scan_data[str(singleip)]['addresses']['mac']
+            if 'mac' in scan_data[str(singleip)]['addresses']:
+                macaddr = scan_data[str(singleip)]['addresses']['mac']
             if 'vendor' in scan_data[str(singleip)]:
                 vendor = scan_data[str(singleip)]['vendor']
 
@@ -37,6 +38,17 @@ def data_parse(ips, data):
                 osname = osmatch['name']
                 osaccuracy = osmatch['accuracy']
                 oscpe = osmatch['osclass'][0]['cpe'][0]
+
+        print('---------------------------------------------------------------')
+        print('Scanning Result!')
+        print('---------------------------------------------------------------')
+        print('Hostname:')
+        print(' -IPV4: ', singleip ,' - ', hostname)
+        print(' -Mac address: ',macaddr)
+        print('OS Match:')
+        print(' -OS Name: ', osname)
+        print(' -Accuracy: ',osaccuracy)
+        print(' -CPE: ', oscpe)
 
 
 
