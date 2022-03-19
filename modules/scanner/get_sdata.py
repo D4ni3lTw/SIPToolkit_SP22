@@ -44,7 +44,7 @@ def data_parse(ips, data):
         print('---------------------------------------------------------------')
         print('Hostname:')
         print(' -IPV4: ', singleip ,' - ', hostname)
-        print(' -Mac address: ',macaddr)
+        # print(' -Mac address: ',macaddr)
         print('OS Match:')
         print(' -OS Name: ', osname)
         print(' -Accuracy: ',osaccuracy)
