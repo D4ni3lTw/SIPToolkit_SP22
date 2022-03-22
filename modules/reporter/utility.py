@@ -1,5 +1,7 @@
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader
+from datetime import datetime
+import os
 import json
 
 
@@ -16,7 +18,7 @@ def get_scanning_data():
 
 
 def get_template():
-    env = Environment(loader=FileSystemLoader('modules/reporter/templates'))
+    env = Environment(loader=FileSystemLoader('data/report_templates'))
     return env.get_template('sample.html')
 
 
@@ -50,5 +52,6 @@ def convert_array_data(array):
 
 
 def save_file(html, ip_addr):
-    with open('{0}.html'.format(ip_addr), 'w') as f:
+    today = datetime.now()
+    with open('report/{0}.html'.format(ip_addr), 'w') as f:
         f.write(html)
