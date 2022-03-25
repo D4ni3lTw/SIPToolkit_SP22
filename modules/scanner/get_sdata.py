@@ -74,37 +74,38 @@ def data_parse(ips, data):
         else:
             print('Host status: \033[91m{0}\033[0m'.format(host_state))
 
-        print("  PORT     STATE         SERVICE")
-        for port in portlist:
-            port_num = port
-            port_state = tcp[port]['state']
-            port_state_reason = tcp[port]['reason']
-            port_name = tcp[port]['name']
-            port_product = tcp[port]['product']
-            port_product_version = tcp[port]['version']
-            port_cpe = tcp[port]['cpe']
+        if host_state.casefold() == 'up':
 
-            if port_state.casefold() == 'open':
-                print("{0:>5s}/{1:3s}  \033[92m{2:12s}\033[0m {3} {4}({5})".format(
-                    str(port), 'tcp', port_state, port_product, port_product_version, port_name
-                ))
-                if 'script' in tcp:
-                    port_script = tcp[port]['script']
-                    print('')
-            else:
-                print("{0:>5s}/{1:3s}  \033[93m{2:12s}\033[0m {3} {4}({5})".format(
-                    str(port), 'tcp', port_state, port_product, port_product_version, port_name
-                ))
-                if 'script' in tcp:
-                    port_script = tcp[port]['script']
-                    print('')
+            print("   PORT    STATE         SERVICE")
+            for port in portlist:
+                port_num = port
+                port_state = tcp[port]['state']
+                port_state_reason = tcp[port]['reason']
+                port_name = tcp[port]['name']
+                port_product = tcp[port]['product']
+                port_product_version = tcp[port]['version']
+                port_cpe = tcp[port]['cpe']
 
-        if host_state == 'up':
-            print("\nOS Fingerprint:")
-            print(' -OS Name: ', osname)
-            print(' -Accuracy: ',osaccuracy)
-            print(' -CPE: ', oscpe)
-        print('')
+                if port_state.casefold() == 'open':
+                    print("{0:>5s}/{1:3s}  \033[92m{2:12s}\033[0m {3} {4}({5})".format(
+                        str(port), 'tcp', port_state, port_product, port_product_version, port_name
+                    ))
+                    if 'script' in tcp:
+                        port_script = tcp[port]['script']
+                        print('')
+                else:
+                    print("{0:>5s}/{1:3s}  \033[93m{2:12s}\033[0m {3} {4}({5})".format(
+                        str(port), 'tcp', port_state, port_product, port_product_version, port_name
+                    ))
+                    if 'script' in tcp:
+                        port_script = tcp[port]['script']
+                        print('')
+
+                print("\nOS Fingerprint:")
+                print(' -OS Name: ', osname)
+                print(' -Accuracy: ',osaccuracy)
+                print(' -CPE: ', oscpe)
+            print('')
 
 #From port scanning CPE into vendor-product
 def cpe_spliter(ips, data):
