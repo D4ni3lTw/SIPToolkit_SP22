@@ -29,6 +29,24 @@ def step_choice():
     answers = prompt(step_prompt, style=custom_style_2)
     return answers['step']
 
+def pentest_choice():
+    step_prompt = {
+        'type': 'list',
+        'name': 'pentest',
+        'message': 'Select a pentesting process!',
+        'choices': ['1. MITM attack with ARP poisoning',
+                    '2. Flood DDOS attack',
+                    '3. Vishing',
+                    '4. Identity spoofing',
+                    '5. Extension password cracking',
+                    '6. SPIT attacks (send spam over VOIP networks)',
+                    '7. Fuzzing',
+                    '8. Misconfiguration and default passwords',
+                    '9. Eavesdropping' ]
+    }
+    answers = prompt(step_prompt, style=custom_style_2)
+    return answers['pentest']
+
 def continue_choice():
     step_prompt = {
         'type': 'list',
@@ -49,17 +67,20 @@ def continue_menu():
         return 3
 
 def print_menu():
+    #Menu description
     menu = ("\x1B[3mThis tool is design to be capable of help pentester with these main step:\x1B[0m\n"
             "-Enumeration/ Scanning\n"
             "-Vulnerable assessment\n"
             "-Exploit\n"
             "-Generate a report\n")
     print(menu)
+    #Menu main step
     choose = main_choice()
     if (choose == '1. Run throught four step'):
         print("Run throught four step")
         return 1
 
+    #Menu selected step
     elif (choose == '2. Run selected step'):
         step = step_choice()
         if (step == '1. Enumeration/Scanning'):
@@ -68,9 +89,38 @@ def print_menu():
         elif (step == '2. Vulnerable Assessment'):
             print("Vulnerable Assessment")
             return 22
+
+        #Menu pentesting step
         elif (step == '3. Exploit'):
-            print("Exploit")
-            return 23
+            pen_step = pentest_choice()
+            if (pen_step == '1. MITM attack with ARP poisoning'):
+                print("MITM attack")
+                return 231
+            elif (pen_step == '2. Flood DDOS attack'):
+                print("Flood DDOS")
+                return 232
+            elif (pen_step == '3. Vishing'):
+                print("Vishing")
+                return 233
+            elif (pen_step == '4. Identity spoofing'):
+                print("Identity spoofing")
+                return 234
+            elif (pen_step == '5. Extension password cracking'):
+                print("Extension password cracking")
+                return 235
+            elif (pen_step == '6. SPIT attacks (send spam over VOIP networks)'):
+                print("SPIT attacks")
+                return 236
+            elif (pen_step == '7. Fuzzing'):
+                print("Fuzzing")
+                return 237
+            elif (pen_step == '8. Misconfiguration and default passwords'):
+                print("Misconfiguration and default passwords")
+                return 238
+            elif (pen_step == '9. Eavesdropping'):
+                print("Eavesdropping")
+                return 239
+
         elif (step == '4. Generate a Report'):
             print("Generate a Report")
             return 24
