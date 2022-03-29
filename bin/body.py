@@ -65,9 +65,105 @@ def main_flow(choice):
             console.error("Unexpected Error Occurred!!!")
             sys.exit(1)
 
-    if (choice == 23):
+    if (choice == 231):
         try:
-            print('Exploit_step')
+            print('MITM attack with ARP poisoning')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 232):
+        try:
+            print('Flood DDOS attack')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 233):
+        try:
+            print('Vishing')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 234):
+        try:
+            print('Identity spoofing')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 235):
+        try:
+            print('Extension password cracking')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 236):
+        try:
+            print('SPIT attacks')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 237):
+        try:
+            print('Fuzzing')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 238):
+        try:
+            print('Misconfiguration and default passwords')
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred!!!")
+            sys.exit(1)
+
+    if (choice == 239):
+        try:
+            print('Eavesdropping')
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred!!!")
