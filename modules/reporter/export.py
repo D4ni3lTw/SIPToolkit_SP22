@@ -3,9 +3,9 @@ from jinja2 import Environment, FileSystemLoader
 from modules.reporter.utility import *
 
 
-def render_vulnerability(vul, total):
+def render_vulnerability(type, vul, total):
     result = render_vulnerability_header(
-        "general", vul['id'] + ' | ' + vul['cwe'])
+        type, vul['id'] + ' | ' + vul['cwe'])
     vul_conf = convert_array_data(vul['vulnerable_configuration'])
     result += render_information("Vulnerable Configuration",
                                  render_body(vul_conf, ""))
@@ -58,7 +58,7 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
     vulerabilities = ''
     for vul in vul_data['results']:
         vulerabilities = vulerabilities + \
-            render_vulnerability(vul, vul_data['total'])
+            render_vulnerability('high', vul, vul_data['total'])
 
     html = template.render(
         count=vul_data['total'],
