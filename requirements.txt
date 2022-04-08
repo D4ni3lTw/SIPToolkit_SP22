@@ -1,0 +1,10 @@
+Jinja2==2.11.3
+nmap==0.0.1
+pandas==1.4.2
+py_console==0.1.4
+pyfiglet==0.8.post1
+PyInquirer==1.0.3
+pyshark==0.4.5
+python_nmap==0.7.1
+requests==2.25.1
+tweepy==4.8.0
