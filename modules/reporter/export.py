@@ -1,6 +1,7 @@
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader
 from modules.reporter.utility import *
+# from utility import *
 
 
 def render_vulnerability(type, vul, total):
@@ -54,14 +55,37 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
                                        render_body("UDP:", table_udp.render(
                                        )) if table_udp != None else "")
 
-    # [vul_data, total_vul_data] = get_vul_data()
     vulerabilities = ''
-    for vul in vul_data['results']:
+    list_vul_data = sorted(vul_data['results'],
+                           key=lambda x: x['cvss'], reverse=True)
+    critical_count = 0
+    high_count = 0
+    medium_count = 0
+    low_count = 0
+    for vul in list_vul_data:
+        type = ''
+        if(vul['cvss'] < 4):
+            type = 'low'
+            low_count += 1
+        else:
+            if(vul['cvss'] < 7):
+                type = 'medium'
+                medium_count += 1
+            else:
+                if (vul['cvss'] < 9):
+                    type = 'high'
+                    high_count += 1
+                else:
+                    type = 'critical'
+                    critical_count += 1
+        total = (critical_count, high_count, medium_count, low_count)
         vulerabilities = vulerabilities + \
-            render_vulnerability('high', vul, vul_data['total'])
-
+            render_vulnerability(type, vul, total)
     html = template.render(
-        count=vul_data['total'],
+        critical_count=critical_count,
+        high_count=high_count,
+        medium_count=medium_count,
+        low_count=low_count,
         start_time=scanstats['timestr'],
         elapsed=scanstats['elapsed'],
         scanning_data=host_information+port_scanning,
@@ -71,10 +95,14 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
 
 
 def export(scanning_data, vul_data, pentest_data):
-    # scanning_data = get_scanning_data()
     template = get_template()
     scanstats = scanning_data['nmap']['scanstats']
     scanning = list(scanning_data['scan'].keys())
     for ip_addr in scanning:
         scan_by_each_ip(ip_addr, scanning_data, vul_data,
                         pentest_data, template, scanstats)
+
+
+# scanning_data_sample = get_scanning_data()
+# vul_data_sample = get_vul_data()
+# export(scanning_data_sample, vul_data_sample, {})
