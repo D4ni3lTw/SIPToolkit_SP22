@@ -4,19 +4,12 @@ from bin.report import *
 from bin.scanning import *
 from bin.vulnassesst import *
 from bin.body import *
-from modules.ultilities import version_checker
 from py_console import console
 import sys
 
 
 
 def main():
-    # Check Python version
-    if version_checker.checker() >= '3.0.0':
-        print("\033[92mYour Python version is good to go!\033[0m")
-    else:
-        print("\033[91mYour version of Python is too old! \nPlease update to version 3\033[0m")
-        sys.exit(1)
     # Starting Process
     # Check module before start
     # Run core

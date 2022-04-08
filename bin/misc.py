@@ -1,12 +1,11 @@
 import sys
 from modules.initial import clear, welcome_screen
-from modules.ultilities import module_checker, term_size
+from modules.ultilities import term_size
 from PyInquirer import style_from_dict, prompt
 from examples import custom_style_2
 
 def loadscreen():
     clear.clrscr()
-    module_checker.ensure_enviroment()
     welcome_screen.banner('','This is note',term_size.get_terminal_size("width"))
 
 def main_choice():
