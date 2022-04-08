@@ -6,13 +6,13 @@ import json
 
 
 def get_vul_data():
-    with open("reporting/vul_data.json", 'r', encoding='UTF-8') as file:
+    with open("modules/reporter/vul_data.json", 'r', encoding='UTF-8') as file:
         result = json.loads(file.read())
-        return [result['results'] if 'results' in result else [], result['total'] if 'total' in result else 0]
+        return result
 
 
 def get_scanning_data():
-    with open("reporting/scan_data.json", 'r', encoding='UTF-8') as file:
+    with open("modules/reporter/scan_data.json", 'r', encoding='UTF-8') as file:
         result = json.loads(file.read())
         return result
 
