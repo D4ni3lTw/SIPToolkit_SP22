@@ -102,9 +102,9 @@ def data_parse(ips, data):
                         print('')
 
                 print("\nOS Fingerprint:")
-                print(' -OS Name: ', osname)
-                print(' -Accuracy: ',osaccuracy)
-                print(' -CPE: ', oscpe)
+            print(' -OS Name: ', osname)
+            print(' -Accuracy: ',osaccuracy)
+            print(' -CPE: ', oscpe)
             print('')
 
 #From port scanning CPE into vendor-product
