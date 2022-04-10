@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        
+        body {
+            padding: 20px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            text-align: right;
+        }
+        
+        table tr {
+            border-bottom: 1px solid;
+        }
+        
+        table th,
+        table td {
+            padding: 10px 20px;
+        }
+        
+        h1,
+        h2 {
+            text-align: center;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            /* background-color: #2196F3; */
+            padding: 10px;
+        }
+        
+        .general {
+            background-color: grey;
+        }
+        
+        .critical {
+            background-color: #b70000;
+        }
+        
+        .high {
+            background-color: #ff0000;
+        }
+        
+        .medium {
+            background-color: #ff8300;
+        }
+        
+        .low {
+            background-color: #faff00;
+        }
+        
+        .info {
+            background-color: #00a9ff;
+        }
+        
+        .grid-item {
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+        
+        hr.solid {
+            border-top: 3px solid #bbb;
+        }
+        
+        .title {
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        
+        .title,
+        .content {
+            font-weight: bold;
+        }
+        
+        .vulnerability {
+            display: grid;
+            grid-template-columns: auto;
+            /* background-color: #2196F3; */
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pentest Report</h1>
+
+    <div class="grid-container">
+        <div class="grid-item critical">{{critical_count}}</div>
+        <div class="grid-item high">{{high_count}}</div>
+        <div class="grid-item medium">{{medium_count}}</div>
+        <div class="grid-item low">{{low_count}}</div>
+        <!-- <div class="grid-item general">{{count}}</div> -->
+    </div>
+
+    <div className="generalInfomation">
+        <div class="scanInformation">
+            <p class="title">Scan Infomation</p>
+            <hr class="solid" />
+            <p>Start time: <span class="content">{{start_time}}</span></p>
+            <p>Elapsed: <span class="content">{{elapsed}}ms</span></p>
+        </div>
+        {{scanning_data}}
+    </div>
+
+    <div class="vulnerabilitiesInformation">
+        <h2 class="header">Vulnerabilities</h2>
+        {{vul_data}}
+    </div>
+</body>
+
+</html>

@@ -8,8 +8,11 @@ from py_console import console
 import sys
 
 
+
 def main():
     # Starting Process
+    # Check module before start
+    # Run core
     try:
         loadscreen()
     except Exception as e:
