@@ -27,7 +27,7 @@ def main_flow(choice):
             ip = str(input("Enter your IP address: "))
             validated_data = ip_valid.validator(ip)
             scandata = scanning(validated_data)
-            vulndata = vulnassesst('signalwire', 'freeswitch')
+            vulndata = vulnassesst(ip, scandata)
             exploit()
             report(scandata,vulndata)
             console.success("Running cycle complete successfully!")
@@ -55,9 +55,8 @@ def main_flow(choice):
 
     if (choice == 22):
         try:
-            vendor = str(input("Enter vendor: "))
-            product = str(input("Enter product: "))
-            vulnassesst(vendor,product)
+            cpe = str(input("Enter cpe: "))
+            # vulnassesst(ip, cpe)
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred!!!")

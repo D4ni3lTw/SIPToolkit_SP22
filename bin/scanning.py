@@ -6,7 +6,7 @@ def scanning(ip):
     print('Start Scanning!!')
     scan_data = make_scan.nmap_scan(ip, "1-500,5000-5500", "-v -sS -sV -sC -A -O -T5")
     if scan_data is not None:
-        get_sdata.data_parse(ip, scan_data)
+        get_sdata.print_data_parse(ip, scan_data)
         return scan_data
     else:
         print("Something wring with the scanner :((((")
