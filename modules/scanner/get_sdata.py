@@ -101,7 +101,7 @@ def data_parse(ips, data):
                         port_script = tcp[port]['script']
                         print('')
 
-                print("\nOS Fingerprint:")
+            print("\nOS Fingerprint:")
             print(' -OS Name: ', osname)
             print(' -Accuracy: ',osaccuracy)
             print(' -CPE: ', oscpe)
