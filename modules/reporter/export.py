@@ -56,7 +56,7 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
                                        )) if table_udp != None else "")
 
     vulerabilities = ''
-    list_vul_data = sorted(vul_data['results'],
+    list_vul_data = sorted(vul_data,
                            key=lambda x: x['cvss'], reverse=True)
     critical_count = 0
     high_count = 0
