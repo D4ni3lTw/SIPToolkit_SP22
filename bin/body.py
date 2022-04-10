@@ -6,6 +6,7 @@ from bin.report import *
 from bin.scanning import *
 from bin.vulnassesst import *
 from py_console import console
+from modules.ultilities import ip_valid
 import sys
 
 def continue_step(menu):
@@ -24,7 +25,8 @@ def main_flow(choice):
     if (choice == 1):
         try:
             ip = str(input("Enter your IP address: "))
-            scandata = scanning(str(ip))
+            validated_data = ip_valid.validator(ip)
+            scandata = scanning(validated_data)
             vulndata = vulnassesst('signalwire', 'freeswitch')
             exploit()
             report(scandata,vulndata)

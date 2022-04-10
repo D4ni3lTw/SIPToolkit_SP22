@@ -101,10 +101,10 @@ def data_parse(ips, data):
                         port_script = tcp[port]['script']
                         print('')
 
-                print("\nOS Fingerprint:")
-                print(' -OS Name: ', osname)
-                print(' -Accuracy: ',osaccuracy)
-                print(' -CPE: ', oscpe)
+            print("\nOS Fingerprint:")
+            print(' -OS Name: ', osname)
+            print(' -Accuracy: ',osaccuracy)
+            print(' -CPE: ', oscpe)
             print('')
 
 #From port scanning CPE into vendor-product
