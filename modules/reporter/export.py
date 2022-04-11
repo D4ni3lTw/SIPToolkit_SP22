@@ -7,9 +7,6 @@ from modules.reporter.utility import *
 def render_vulnerability(type, vul, total):
     result = render_vulnerability_header(
         type, vul['id'] + ' | ' + vul['cwe'])
-    vul_conf = convert_array_data(vul['vulnerable_configuration'])
-    result += render_information("Vulnerable Configuration",
-                                 render_body(vul_conf, ""))
     result += render_information("Modified", render_body(vul['Modified'], ""))
     result += render_information("Published",
                                  render_body(vul['Published'], ""))
