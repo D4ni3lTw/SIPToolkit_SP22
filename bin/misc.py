@@ -13,7 +13,7 @@ def main_choice():
         'type': 'list',
         'name': 'choice',
         'message': 'Please select choice suite your plan?',
-        'choices': ['1. Run throught four step', '2. Run selected step', '3. Option', '4. Dung Chon Em', '5. Exit']
+        'choices': ['1. Run throught four step', '2. Run selected step', '3. Option', '5. Exit']
     }
     answers = prompt(choice_prompt, style=custom_style_2)
     return answers['choice']
