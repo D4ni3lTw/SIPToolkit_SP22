@@ -82,6 +82,10 @@ def main_flow(choice):
     if (choice == 232):
         try:
             print('Flood DDOS attack')
+            ip = str(input('Target IP: '))
+            port = int(input('Port: '))
+            duration = int(input('Number of seconds to send packets: '))
+            exploit(ip,port,duration)
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred!!!")
