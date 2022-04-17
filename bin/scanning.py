@@ -9,7 +9,7 @@ def scanning(ip):
         get_sdata.print_data_parse(ip, scan_data)
         return scan_data
     else:
-        print("Something wring with the scanner :((((")
+        print("Something wrong with the scanner :((((")
 
 
 
