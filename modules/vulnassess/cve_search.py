@@ -45,13 +45,6 @@ def get_vul_data(ips, data):
                                 break
             return list_vul
 
-
-# def get_scan_data():
-#     with open("modules/reporter/scan_data.json", 'r', encoding='UTF-8') as file:
-#         result = json.loads(file.read())
-#         return result
-
-
 def get_cpe_dictionary():
     with open("data/cpe_dictionary/data.json", 'r', encoding='UTF-8') as file:
         result = json.loads(file.read())
