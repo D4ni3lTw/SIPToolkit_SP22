@@ -30,7 +30,7 @@ def main_flow(choice):
             validated_data = ip_valid.validator(ip)
             scandata = scanning(validated_data)
             vulndata = vulnassesst(ip, scandata)
-            exploit(ip, 80, 10)
+            # exploit(ip, 80, 10)
             report(scandata, vulndata)
             console.success("Running cycle complete successfully!")
             continue_step(choice)
