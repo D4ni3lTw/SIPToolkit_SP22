@@ -13,7 +13,11 @@ def main_choice():
         'type': 'list',
         'name': 'choice',
         'message': 'Please select choice suite your plan?',
-        'choices': ['1. Run throught four step', '2. Run selected step', '3. Option', '5. Exit']
+        'choices': [
+            '1. Run throught four step',
+            '2. Run selected step',
+            '3. Option',
+            '5. Exit']
     }
     answers = prompt(choice_prompt, style=custom_style_2)
     return answers['choice']
@@ -23,7 +27,13 @@ def step_choice():
         'type': 'list',
         'name': 'step',
         'message': 'Select a step to start the process!',
-        'choices': ['1. Enumeration/Scanning', '2. Vulnerable Assessment', '3. Exploit', '4. Generate a Report', '5. Back to main menu']
+        'choices': [
+            '1. Enumeration/Scanning',
+            '2. Vulnerable Assessment',
+            '3. Exploit',
+            '4. Generate a Report',
+            '5. Back to main menu'
+        ]
     }
     answers = prompt(step_prompt, style=custom_style_2)
     return answers['step']
@@ -36,7 +46,7 @@ def pentest_choice():
         'choices': ['1. MITM attack with ARP poisoning',
                     '2. Flood DDOS attack',
                     '3. Vishing',
-                    '4. Identity spoofing',
+                    '4. Identity(Username/Password) Brute-force',
                     '5. Extension password cracking',
                     '6. SPIT attacks (send spam over VOIP networks)',
                     '7. Fuzzing',
@@ -51,7 +61,10 @@ def continue_choice():
         'type': 'list',
         'name': 'rerun',
         'message': 'Do you want to continue ? (Y/N)',
-        'choices': ['Yes', 'Continue with other steps', 'No']
+        'choices': [
+            'Yes',
+            'Continue with other steps',
+            'No']
     }
     answers = prompt(step_prompt, style=custom_style_2)
     return answers['rerun']
@@ -101,8 +114,8 @@ def print_menu():
             elif (pen_step == '3. Vishing'):
                 print("Vishing")
                 return 233
-            elif (pen_step == '4. Identity spoofing'):
-                print("Identity spoofing")
+            elif (pen_step == '4. Identity(Username/Password) Brute-force'):
+                print("Identity(Username/Password) Brute-force")
                 return 234
             elif (pen_step == '5. Extension password cracking'):
                 print("Extension password cracking")
