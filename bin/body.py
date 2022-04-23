@@ -26,12 +26,13 @@ def continue_step(menu):
 def main_flow(choice):
     if (choice == 1):
         try:
-            ip = str(input("Enter your IP address: "))
+            ip = input("Enter your IP address: ")
+            ip = ip.rstrip('\n')
             validated_data = ip_valid.validator(ip)
             scandata = scanning(validated_data)
             vulndata = vulnassesst(ip, scandata)
-            exploit(ip)
-            report(scandata, vulndata, exploit)
+            # exploit(ip)
+            report(scandata, vulndata, '')
             console.success("Running cycle complete successfully!")
             continue_step(choice)
         except Exception as e:
@@ -44,7 +45,8 @@ def main_flow(choice):
 
     if (choice == 21):
         try:
-            ip = str(input("Enter your IP address: "))
+            ip = input("Enter your IP address: ")
+            ip = ip.rstrip('\n')
             scanning(str(ip))
             continue_step(choice)
         except Exception as e:
