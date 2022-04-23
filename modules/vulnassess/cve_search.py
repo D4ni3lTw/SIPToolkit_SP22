@@ -1,24 +1,66 @@
 import requests
 import sys
+import json
 
 
-def get_api(vendor, product):
-    r = requests.get("https://cvepremium.circl.lu/api/search/%s/%s" %
-                     (vendor, product))
+def ip_spliter(ips):
+    if ' ' in ips:
+        ip = ips.split(' ')
+        return ip
+        # print(ip)
+    else:
+        return [ips]
 
+
+def get_vul_data(ips, data):
+    ip = ip_spliter(ips)
+    scan_data = data['scan']
+    dict_cpe = get_cpe_dictionary()
+    for singleip in ip:
+        if scan_data is not None:
+            list_vul = []
+            if 'tcp' in scan_data[str(singleip)]:
+                tcp = scan_data[str(singleip)]['tcp']
+                portlist = list(tcp.keys())
+                for port in portlist:
+                    port_num = port
+                    port_cpe = tcp[port]['cpe']
+                    if port_cpe != '':
+                        cpe_arr = port_cpe.split(':')
+                        cpe_arr.remove('cpe')
+                        cpe_arr.remove('/a')
+                        cpe_arr.pop(0)
+                        cpe_rejoin = ':'.join(cpe_arr)
+                        for cpe_item in dict_cpe:
+                            if(cpe_rejoin in cpe_item):
+                                list_full_vul_data = get_api(cpe_item)
+                                for vul in list_full_vul_data:
+                                    if('vulnerable_configuration' in vul):
+                                        del vul['vulnerable_configuration']
+                                    if('vulnerable_product' in vul):  
+                                        del vul['vulnerable_product']
+                                    if('vulnerable_configuration_cpe_2_2' in vul):    
+                                        del vul['vulnerable_configuration_cpe_2_2']
+                                    list_vul.append(vul)
+                                break
+            return list_vul
+
+def get_cpe_dictionary():
+    with open("data/cpe_dictionary/data.json", 'r', encoding='UTF-8') as file:
+        result = json.loads(file.read())
+        return result
+
+
+def get_api(cpe):
+    r = requests.get("https://cvepremium.circl.lu/api/cvefor/%s" % (cpe))
     vulns = r.json()
     if vulns is not None:
         return vulns
 
 
-def get_data(data):
-    result = data['results']
+def print_data(result):
     if result is not None:
-
         for v in result:
-            vulnerable_configuration = v['vulnerable_configuration'][0]
-            vulnerable_configuration_cpe_2_2 = v['vulnerable_configuration_cpe_2_2']
-            vulnerable_product = v['vulnerable_product']
             Modified = v['Modified']
             Published = v['Published']
 
@@ -64,8 +106,8 @@ def get_data(data):
                 ref = references
 
             summary = v['summary']
-
-            print()
+            print("=============== " + cveid + " ===============")
+            print(" CWE: ", cwe)
             print(" CVSS: ", cvss)
             print(" Impact Score: ", impactScore)
             print(" Exploitability Score: ", exploitabilityScore)
@@ -75,11 +117,3 @@ def get_data(data):
             print(" Impact Score 3: ", impactScore3)
             print(" Exploitability Score 3: ", exploitabilityScore3)
             print(" Summary: ", summary)
-            print()
-
-
-
-
-
-
-

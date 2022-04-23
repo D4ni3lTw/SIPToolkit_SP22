@@ -7,9 +7,6 @@ from modules.reporter.utility import *
 def render_vulnerability(type, vul, total):
     result = render_vulnerability_header(
         type, vul['id'] + ' | ' + vul['cwe'])
-    vul_conf = convert_array_data(vul['vulnerable_configuration'])
-    result += render_information("Vulnerable Configuration",
-                                 render_body(vul_conf, ""))
     result += render_information("Modified", render_body(vul['Modified'], ""))
     result += render_information("Published",
                                  render_body(vul['Published'], ""))
@@ -56,7 +53,7 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
                                        )) if table_udp != None else "")
 
     vulerabilities = ''
-    list_vul_data = sorted(vul_data['results'],
+    list_vul_data = sorted(vul_data,
                            key=lambda x: x['cvss'], reverse=True)
     critical_count = 0
     high_count = 0
