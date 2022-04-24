@@ -1,27 +1,5 @@
 import pandas as pd
-from jinja2 import Environment, FileSystemLoader
 from modules.reporter.utility import *
-# from utility import *
-
-
-def render_vulnerability(type, vul, total):
-    result = render_vulnerability_header(
-        type, vul['id'] + ' | ' + vul['cwe'])
-    result += render_information("Modified", render_body(vul['Modified'], ""))
-    result += render_information("Published",
-                                 render_body(vul['Published'], ""))
-    result += render_information("Assigner", render_body(vul['assigner'], ""))
-
-    result += render_information("CVSS v2.0 Score", render_body(
-        "{0} ({1})".format(str(vul['cvss']), vul['cvss-vector']), ""))
-    result += render_information("CVSS v3.0 Score", render_body(
-        "{0} ({1})".format(str(vul['cvss3']), vul['cvss3-vector']), ""))
-    ref = convert_array_data(vul['references'])
-    result += render_information("References", render_body(ref, ""))
-    result += render_information("Summary", render_body(vul['summary'], ""))
-
-    return result
-
 
 def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, scanstats):
     info_by_port = scanning_data['scan'][str(ip_addr)]
@@ -78,6 +56,10 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
         total = (critical_count, high_count, medium_count, low_count)
         vulerabilities = vulerabilities + \
             render_vulnerability(type, vul, total)
+    rendered_pentest_data = ''
+    for pentest in pentest_data:
+        rendered_pentest_data += render_pentest(
+            pentest['name'], pentest['value'])
     html = template.render(
         critical_count=critical_count,
         high_count=high_count,
@@ -86,7 +68,8 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
         start_time=scanstats['timestr'],
         elapsed=scanstats['elapsed'],
         scanning_data=host_information+port_scanning,
-        vul_data=vulerabilities
+        vul_data=vulerabilities,
+        pentest_data=rendered_pentest_data
     )
     save_file(html, ip_addr)
 
@@ -98,8 +81,3 @@ def export(scanning_data, vul_data, pentest_data):
     for ip_addr in scanning:
         scan_by_each_ip(ip_addr, scanning_data, vul_data,
                         pentest_data, template, scanstats)
-
-
-# scanning_data_sample = get_scanning_data()
-# vul_data_sample = get_vul_data()
-# export(scanning_data_sample, vul_data_sample, {})
