@@ -1,8 +1,5 @@
 import pandas as pd
-from jinja2 import Environment, FileSystemLoader
 from modules.reporter.utility import *
-# from utility import *
-
 
 def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, scanstats):
     info_by_port = scanning_data['scan'][str(ip_addr)]
@@ -60,24 +57,6 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
         vulerabilities = vulerabilities + \
             render_vulnerability(type, vul, total)
     rendered_pentest_data = ''
-    pentest_data = [
-        {
-            "name": "ssh bruteforce",
-            "value": {
-                "username": "username",
-                "password": "password"
-            }
-        },
-
-        {
-            "name": "web bruteforce",
-            "value": {
-                "username": "username",
-                "password": "password"
-            }
-        }
-    ]
-
     for pentest in pentest_data:
         rendered_pentest_data += render_pentest(
             pentest['name'], pentest['value'])
@@ -102,8 +81,3 @@ def export(scanning_data, vul_data, pentest_data):
     for ip_addr in scanning:
         scan_by_each_ip(ip_addr, scanning_data, vul_data,
                         pentest_data, template, scanstats)
-
-
-# scanning_data_sample = get_scanning_data()
-# vul_data_sample = get_vul_data()
-# export(scanning_data_sample, vul_data_sample, {})
