@@ -25,10 +25,9 @@ def render_vulnerability(type, vul, total):
 
 
 def render_pentest(name, value):
-    result = render_information(name, render_body(
-        'Username', value['username']))
-    result += render_information(name, render_body(
-    'Password', value['password']))
+    result = render_information(name,
+                                render_body('Username', value['username'] +
+                                            render_body('Password', value['password'])))
     return result
 
 
