@@ -24,15 +24,17 @@ def continue_step(menu):
 
 
 def main_flow(choice):
+    default_username_list = 'data/wordlist/username.txt'
+    default_password_list = 'data/wordlist/password.txt'
+    default_username = 'hauhppse14'
     if (choice == 1):
         try:
-            ip = input("Enter your IP address: ")
-            ip = ip.rstrip('\n')
+            ip = str(input("Enter your IP address: ")).strip()
             validated_data = ip_valid.validator(ip)
             scandata = scanning(validated_data)
             vulndata = vulnassesst(ip, scandata)
-            # exploit(ip)
-            report(scandata, vulndata, '')
+            exploit(ip, default_username_list, default_password_list)
+            report(scandata, vulndata, exploit)
             console.success("Running cycle complete successfully!")
             continue_step(choice)
         except Exception as e:
