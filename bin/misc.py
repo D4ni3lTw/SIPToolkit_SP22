@@ -17,7 +17,7 @@ def main_choice():
             '1. Run throught four step',
             '2. Run selected step',
             '3. Option',
-            '5. Exit']
+            '4. Exit']
     }
     answers = prompt(choice_prompt, style=custom_style_2)
     return answers['choice']
@@ -145,11 +145,7 @@ def print_menu():
         print("Do third choice")
         return 3
 
-    elif (choose == '4. Dung Chon Em'):
-        print("Hu qua")
-        return 4
-
-    elif (choose == '5. Exit'):
+    elif (choose == '4. Exit'):
         clear.clrscr()
         print("See you again!!!")
-        return 5
+        return 4
