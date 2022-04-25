@@ -33,7 +33,10 @@ def main_flow(choice):
             if (ip_valid.validator(ip)):
                 scandata = scanning(ip)
                 vul_data = vulnassesst(ip, scandata)
-                pentest_data = exploit(ip, default_username_list, default_password_list, default_fuzzing_list)
+                print('------------------------------------------------')
+                input("Press Enter to continue to Pentest phase...")
+                pentest_data = exploit(
+                    ip, default_username_list, default_password_list, default_fuzzing_list)
                 report(scandata, vul_data, pentest_data)
                 console.success("Running cycle complete successfully!")
                 continue_step(choice)

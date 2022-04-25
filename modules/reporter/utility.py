@@ -79,7 +79,8 @@ def convert_array_data(array):
 
 def save_file(html, ip_addr):
     today = datetime.now()
-    if not os.path.exists('report/' + today.strftime('%d' + '_%m_' + '%Y')):
-        os.makedirs("report/" + today.strftime('%d' + '_%m_' + '%Y'))
+    path = 'report/' + today.strftime('%d' + '_%m_' + '%Y')
+    if not os.path.exists(path):
+        os.makedirs(path)
         with open('report/' + today.strftime('%d' + '_%m_' + '%Y') + '/{0}.html'.format(ip_addr), 'w') as f:
             f.write(html)
