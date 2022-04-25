@@ -3,6 +3,9 @@ from modules.vulnassess import cve_search
 
 
 def vulnassesst(ip, scan_data):
+    print('\n----------------------------------------------------')
+    print('Vulnerability Assessment')
+    print('----------------------------------------------------')
     vul_data = get_file_by_each_step('vul_data', ip)
     if vul_data is None:
         vul_data = cve_search.get_vul_data(ip, scan_data)

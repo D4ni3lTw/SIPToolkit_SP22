@@ -109,4 +109,5 @@ def print_data(result):
             print(" Impact Score 3: ", impactScore3)
             print(" Exploitability Score 3: ", exploitabilityScore3)
             print(" Summary: ", summary)
+            print()
 
