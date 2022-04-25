@@ -16,8 +16,7 @@ def main_choice():
         'choices': [
             '1. Run throught four step',
             '2. Run selected step',
-            '3. Option',
-            '4. Exit']
+            '3. Exit']
     }
     answers = prompt(choice_prompt, style=custom_style_2)
     return answers['choice']
@@ -141,11 +140,7 @@ def print_menu():
             welcome_screen.banner('','',term_size.get_terminal_size("width"))
             print_menu()
 
-    elif (choose == '3. Option'):
-        print("Do third choice")
-        return 3
-
-    elif (choose == '4. Exit'):
+    elif (choose == '3. Exit'):
         clear.clrscr()
         print("See you again!!!")
-        return 4
+        return 3

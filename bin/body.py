@@ -207,28 +207,4 @@ def main_flow(choice):
             sys.exit(1)
 
     if (choice == 3):
-        try:
-            print('Options')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
-
-    if (choice == 4):
-        try:
-            print('go back')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
-
-    if (choice == 5):
         pass
