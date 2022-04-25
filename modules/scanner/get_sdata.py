@@ -1,3 +1,7 @@
+import requests
+import json
+
+
 def ip_spliter(ips):
     if ' ' in ips:
         ip = ips.split(' ')
@@ -6,7 +10,8 @@ def ip_spliter(ips):
     else:
         return [ips]
 
-def data_parse(ips, data):
+
+def print_data_parse(ips, data):
     print('---------------------------------------------------------------')
     print('Scanning Result!')
     print('---------------------------------------------------------------')
@@ -60,15 +65,15 @@ def data_parse(ips, data):
 
         print("\033[1mScan report for IP {0}\033[0m".format(singleip))
         if hostname != '':
-            print('IPV4: ', singleip ,' - ', hostname)
+            print('IPV4: ', singleip, ' - ', hostname)
         else:
             print('IPV4: ', singleip)
 
-        #MAC Address
+        # MAC Address
         if macaddr != '':
-            print(' -Mac address: ',macaddr)
+            print(' -Mac address: ', macaddr)
 
-        #Host state
+        # Host state
         if host_state.casefold() == 'up':
             print('Host status: \033[92m{0}\033[0m'.format(host_state))
         else:
@@ -103,23 +108,6 @@ def data_parse(ips, data):
 
             print("\nOS Fingerprint:")
             print(' -OS Name: ', osname)
-            print(' -Accuracy: ',osaccuracy)
+            print(' -Accuracy: ', osaccuracy)
             print(' -CPE: ', oscpe)
             print('')
-
-#From port scanning CPE into vendor-product
-def cpe_spliter(ips, data):
-    ip = ip_spliter(ips)
-    scan_data = data['scan']
-    for singleip in ip:
-        if scan_data is not None:
-            if 'tcp' in scan_data[str(singleip)]:
-                tcp = scan_data[str(singleip)]['tcp']
-                portlist = list(tcp.keys())
-                for port in portlist:
-                    port_num = port
-                    port_cpe = tcp[port]['cpe']
-
-
-
-

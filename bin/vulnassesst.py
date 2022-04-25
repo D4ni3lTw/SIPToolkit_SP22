@@ -1,17 +1,15 @@
+from modules.ultilities.result_cached import save_file_by_each_step, get_file_by_each_step
 from modules.vulnassess import cve_search
-from py_console import console
-import sys
 
-def vulnassesst(vendor,product):
-    if ( vendor is not None and product is not None ):
-        try:
-            api = cve_search.get_api(vendor, product)
-            cve_search.get_data(api)
-            return api
-        except Exception as e:
-            console.error("An Error Occurred!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred")
-            sys.exit(1)
+
+def vulnassesst(ip, scan_data):
+    vul_data = get_file_by_each_step('vul_data', ip)
+    if vul_data is None:
+        vul_data = cve_search.get_vul_data(ip, scan_data)
+    if vul_data is not None:
+        cve_search.print_data(vul_data)
+        save_file_by_each_step(vul_data, 'vul_data', ip)
+        return vul_data
+    else:
+        print("Something wrong when getting vulnerabilities :((((")
+        return None

