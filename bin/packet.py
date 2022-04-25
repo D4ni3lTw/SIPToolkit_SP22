@@ -7,8 +7,6 @@ from bin.body import *
 from py_console import console
 import sys
 
-
-
 def main():
     # Starting Process
     # Check module before start
@@ -23,8 +21,6 @@ def main():
         console.error("Faill to start the program!!",
                       "\nPlease read the document for fearther information!!")
         sys.exit(1)
-
-    # Main program function
     try:
         user_choice = print_menu()
         main_flow(user_choice)
