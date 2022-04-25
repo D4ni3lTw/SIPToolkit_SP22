@@ -26,13 +26,14 @@ def continue_step(menu):
 def main_flow(choice):
     default_username_list = 'data/wordlist/username.txt'
     default_password_list = 'data/wordlist/password.txt'
+    default_fuzzing_list = 'data/wordlist/sample_dir.txt'
     if (choice == 1):
         try:
             ip = str(input("Enter your IP address: ")).strip()
             validated_data = ip_valid.validator(ip)
             scandata = scanning(validated_data)
             vul_data = vulnassesst(ip, scandata)
-            pentest_data = exploit(ip, default_username_list, default_password_list)
+            pentest_data = exploit(ip, default_username_list, default_password_list, default_fuzzing_list)
             print('check pentest data')
             print(pentest_data)
             report(scandata, vul_data, pentest_data)
