@@ -1,5 +1,4 @@
 from modules.ultilities.result_cached import save_file_by_each_step, get_file_by_each_step
-from modules.reporter.utility import save_file
 from modules.scanner import make_scan, get_sdata
 from modules.initial import clear
 def scanning(ip):

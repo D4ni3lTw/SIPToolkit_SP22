@@ -1,13 +1,17 @@
 
 import json
+import os
 
 
 def save_file_by_each_step(result, fileName):
     jsonString = json.dumps(result)
     path = f"result/{fileName}.json"
+    if not os.path.exists('result/'):
+        os.makedirs("result/",0o777)
     jsonFile = open(path, "w")
     jsonFile.write(jsonString)
     jsonFile.close()
+    print('save file--------------------')
 
 
 def get_file_by_each_step(fileName):
