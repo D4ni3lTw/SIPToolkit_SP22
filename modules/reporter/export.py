@@ -1,6 +1,7 @@
 import pandas as pd
 from modules.reporter.utility import *
 
+
 def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, scanstats):
     info_by_port = scanning_data['scan'][str(ip_addr)]
     host_name = info_by_port['hostnames'][0]['name']
@@ -57,9 +58,10 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
         vulerabilities = vulerabilities + \
             render_vulnerability(type, vul, total)
     rendered_pentest_data = ''
-    for pentest in pentest_data:
-        rendered_pentest_data += render_pentest(
-            pentest['name'], pentest['value'])
+    if(len(pentest_data) > 0):
+        for pentest in pentest_data:
+            rendered_pentest_data += render_pentest(
+                pentest['name'], pentest['value'])
     html = template.render(
         critical_count=critical_count,
         high_count=high_count,
