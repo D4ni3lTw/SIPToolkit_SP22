@@ -29,15 +29,16 @@ def main_flow(choice):
     if (choice == 1):
         try:
             ip = str(input("Enter your IP address: ")).strip()
-            validated_data = ip_valid.validator(ip)
-            scandata = scanning(validated_data)
-            vul_data = vulnassesst(ip, scandata)
-            pentest_data = exploit(ip, default_username_list, default_password_list)
-            print('check pentest data')
-            print(pentest_data)
-            report(scandata, vul_data, pentest_data)
-            console.success("Running cycle complete successfully!")
-            continue_step(choice)
+            if (ip_valid.validator(ip)):
+                scandata = scanning(ip)
+                vul_data = vulnassesst(ip, scandata)
+                pentest_data = exploit(ip, default_username_list, default_password_list)
+                report(scandata, vul_data, pentest_data)
+                console.success("Running cycle complete successfully!")
+                continue_step(choice)
+            else:
+                console.error("Incorrect IP format!!!")
+                pass
         except Exception as e:
             console.error("An Error Occurred!!!")
             console.error(e)
