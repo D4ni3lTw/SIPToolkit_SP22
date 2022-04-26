@@ -42,15 +42,12 @@ def pentest_choice():
         'type': 'list',
         'name': 'pentest',
         'message': 'Select a pentesting process!',
-        'choices': ['1. MITM attack with ARP poisoning',
-                    '2. Flood DDOS attack',
-                    '3. Vishing',
-                    '4. Identity(Username/Password) Brute-force',
+        'choices': ['1. Flood DDOS attack',
+                    '2. Bruteforce SSH',
+                    '3. Bruteforce Login (Support CSRF bypass)',
+                    '4. Fuzzing',
                     '5. Extension password cracking',
-                    '6. SPIT attacks (send spam over VOIP networks)',
-                    '7. Fuzzing',
-                    '8. Misconfiguration and default passwords',
-                    '9. Eavesdropping' ]
+                    '6. Eavesdropping' ]
     }
     answers = prompt(step_prompt, style=custom_style_2)
     return answers['pentest']
@@ -104,33 +101,24 @@ def print_menu():
         #Menu pentesting step
         elif (step == '3. Exploit'):
             pen_step = pentest_choice()
-            if (pen_step == '1. MITM attack with ARP poisoning'):
-                print("MITM attack")
-                return 231
-            elif (pen_step == '2. Flood DDOS attack'):
+            if (pen_step == '1. Flood DDOS attack'):
                 print("Flood DDOS")
+                return 231
+            elif (pen_step == '2. Bruteforce SSH'):
+                print("Bruteforce SSH")
                 return 232
-            elif (pen_step == '3. Vishing'):
-                print("Vishing")
+            elif (pen_step == '3. Bruteforce Login (Support CSRF bypass)'):
+                print("Bruteforce Login")
                 return 233
-            elif (pen_step == '4. Identity(Username/Password) Brute-force'):
+            elif (pen_step == '4. Directory Fuzzing'):
                 print("Identity(Username/Password) Brute-force")
                 return 234
             elif (pen_step == '5. Extension password cracking'):
                 print("Extension password cracking")
                 return 235
-            elif (pen_step == '6. SPIT attacks (send spam over VOIP networks)'):
-                print("SPIT attacks")
-                return 236
-            elif (pen_step == '7. Fuzzing'):
-                print("Fuzzing")
-                return 237
-            elif (pen_step == '8. Misconfiguration and default passwords'):
-                print("Misconfiguration and default passwords")
-                return 238
-            elif (pen_step == '9. Eavesdropping'):
+            elif (pen_step == '6. Eavesdropping'):
                 print("Eavesdropping")
-                return 239
+                return 236
 
         elif (step == '4. Generate a Report'):
             print("Generate a Report")

@@ -8,6 +8,7 @@ from bin.vulnassesst import *
 from py_console import console
 from modules.ultilities import ip_valid
 import sys
+import time
 
 
 def continue_step(menu):
@@ -83,58 +84,62 @@ def main_flow(choice):
 
     if (choice == 231):
         try:
-            print('MITM attack with ARP poisoning')
+            ip = str(input('Target IP: '))
+            port = int(input('Port: '))
+            duration = int(input('Number of seconds to send packets: '))
+            floodddos(ip, port, duration)
             continue_step(choice)
         except Exception as e:
-            console.error("An Error Occurred!!!")
+            console.error("An Error Occurred At Manual Flood DDOS!!!")
             console.error(e)
             sys.exit(1)
         except:
-            console.error("Unexpected Error Occurred!!!")
+            console.error("Unexpected Error Occurred At Manual Flood DDOS!!!")
             sys.exit(1)
 
     if (choice == 232):
         try:
-            print('Flood DDOS attack')
             ip = str(input('Target IP: '))
-            port = int(input('Port: '))
-            duration = int(input('Number of seconds to send packets: '))
-            exploit(ip, port, duration)
+            default_username_list = str(input('Username Wordlist: '))
+            default_password_list = str(input('Password Wordlist: '))
+            bruteforce_ssh.bruteforce(ip, default_username_list, default_password_list)
             continue_step(choice)
         except Exception as e:
-            console.error("An Error Occurred!!!")
+            console.error("An Error Occurred At Manual Bruteforce SSH!!!")
             console.error(e)
             sys.exit(1)
         except:
-            console.error("Unexpected Error Occurred!!!")
+            console.error("Unexpected Error Occurred At Manual Bruteforce SSH!!!")
             sys.exit(1)
 
     if (choice == 233):
         try:
-            print('Vishing')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
-
-    if (choice == 234):
-        try:
-            print('Identity(Username/Password) Bruteforce')
             ip = str(input('Target IP:'))
             usernames = str(input('Username wordlist:'))
             passwords = str(input('Password wordlist:'))
             bruteforce_login.bruteforcelogin(ip, usernames, passwords)
             continue_step(choice)
         except Exception as e:
-            console.error("An Error Occurred!!!")
+            console.error("An Error Occurred At Manual Bruteforce Login!!!")
             console.error(e)
             sys.exit(1)
         except:
-            console.error("Unexpected Error Occurred!!!")
+            console.error("Unexpected Error Occurred At Manual Bruteforce Login!!!")
+            sys.exit(1)
+
+
+    if (choice == 234):
+        try:
+            url = str(input('Target URL:'))
+            fuzzing_list = str(input('Fuzzing Wordlist: '))
+            fuzzing.dir_fuzzing(url, fuzzing_list, showRedirect=None)
+            continue_step(choice)
+        except Exception as e:
+            console.error("An Error Occurred At Manual Directory Fuzzing!!!")
+            console.error(e)
+            sys.exit(1)
+        except:
+            console.error("Unexpected Error Occurred At Manual Directory Fuzzing!!!")
             sys.exit(1)
 
     if (choice == 235):
@@ -142,59 +147,29 @@ def main_flow(choice):
             print('Extension password cracking')
             continue_step(choice)
         except Exception as e:
-            console.error("An Error Occurred!!!")
+            console.error("An Error Occurred At Manual Extension Password Cracking!!!")
             console.error(e)
             sys.exit(1)
         except:
-            console.error("Unexpected Error Occurred!!!")
+            console.error("Unexpected Error Occurred At Manual Extension Password Cracking!!!")
             sys.exit(1)
 
     if (choice == 236):
         try:
-            print('SPIT attacks')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
+            filename = str(input('Output Filename: '))
+            eaves_timeout = int(input('Eavesdropping timeout: '))
+            if filename != '' or eaves_timeout != '':
+                eavesdrop.eavesdropping(str(filename), eaves_timeout)
+            else:
+                print('[-] Empty Output Filename or Eavesdropping timeout')
 
-    if (choice == 237):
-        try:
-            print('Fuzzing')
             continue_step(choice)
         except Exception as e:
-            console.error("An Error Occurred!!!")
+            console.error("An Error Occurred At Manual Eavesdropping!!!")
             console.error(e)
             sys.exit(1)
         except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
-
-    if (choice == 238):
-        try:
-            print('Misconfiguration and default passwords')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
-
-    if (choice == 239):
-        try:
-            print('Eavesdropping')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
+            console.error("Unexpected Error Occurred At Manual Eavesdropping!!!")
             sys.exit(1)
 
     if (choice == 24):
