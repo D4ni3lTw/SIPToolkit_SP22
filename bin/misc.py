@@ -46,8 +46,7 @@ def pentest_choice():
                     '2. Bruteforce SSH',
                     '3. Bruteforce Login (Support CSRF bypass)',
                     '4. Fuzzing',
-                    '5. Extension password cracking',
-                    '6. Eavesdropping' ]
+                    '5. Eavesdropping' ]
     }
     answers = prompt(step_prompt, style=custom_style_2)
     return answers['pentest']
@@ -113,16 +112,14 @@ def print_menu():
             elif (pen_step == '4. Directory Fuzzing'):
                 print("Identity(Username/Password) Brute-force")
                 return 234
-            elif (pen_step == '5. Extension password cracking'):
-                print("Extension password cracking")
-                return 235
-            elif (pen_step == '6. Eavesdropping'):
+            elif (pen_step == '5. Eavesdropping'):
                 print("Eavesdropping")
-                return 236
+                return 235
 
         elif (step == '4. Generate a Report'):
             print("Generate a Report")
             return 24
+
         elif (step == '5. Back to main menu'):
             clear.clrscr()
             welcome_screen.banner('','',term_size.get_terminal_size("width"))
