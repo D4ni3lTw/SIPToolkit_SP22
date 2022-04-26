@@ -54,7 +54,7 @@ def get_vul_data(ip, data, port_cpe):
                                 del vul['vulnerable_configuration_cpe_2_2']
                             list_vul.append(vul)
                     break
-        return list_vul
+    return list_vul
 
 def get_cpe_dictionary():
     with open("data/cpe_dictionary/data.json", 'r', encoding='UTF-8') as file:
