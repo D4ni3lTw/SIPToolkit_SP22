@@ -35,8 +35,8 @@ def main_flow(choice):
                 vul_data = vulnassesst(ip, scandata)
                 print('------------------------------------------------')
                 input("Press Enter to continue to Pentest phase...")
-                pentest_data = exploit(
-                    ip, default_username_list, default_password_list, default_fuzzing_list)
+                pentest_data = exploit( ip, default_username_list, default_password_list, default_fuzzing_list)
+                print(pentest_data)
                 report(scandata, vul_data, pentest_data)
                 console.success("Running cycle complete successfully!")
                 continue_step(choice)
@@ -44,11 +44,11 @@ def main_flow(choice):
                 console.error("Incorrect IP format!!!")
                 pass
         except Exception as e:
-            console.error("An Error Occurred!!!")
+            console.error("An Error Occurred At Automatic Step!!!")
             console.error(e)
             sys.exit(1)
         except:
-            console.error("Unexpected Error Occurred!!!")
+            console.error("Unexpected Error Occurred At Automatic Step!!!")
             sys.exit(1)
 
     if (choice == 21):
