@@ -9,7 +9,7 @@ def scanning(ip):
     scan_data = get_file_by_each_step('scan_data', ip)
     if scan_data is None:
         scan_data = make_scan.nmap_scan(
-            ip, "1-500,5000-5500", "-v -sS -sV -sC -A -O -T5")
+            ip, "1-6000", "-v -sS -sV -sC -A -O -T5")
     if scan_data is not None:
         get_sdata.print_data_parse(ip, scan_data)
         save_file_by_each_step(scan_data, 'scan_data', ip)

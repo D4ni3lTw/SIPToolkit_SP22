@@ -16,8 +16,7 @@ def main_choice():
         'choices': [
             '1. Run through four step',
             '2. Run selected step',
-            '3. Option',
-            '4. Exit']
+            '3. Exit']
     }
     answers = prompt(choice_prompt, style=custom_style_2)
     return answers['choice']
@@ -44,10 +43,11 @@ def pentest_choice():
         'name': 'pentest',
         'message': 'Select a pentesting process!',
         'choices': ['1. Flood DDOS attack',
-                    '2. Identity(Username/Password) Brute-force',
-                    '3. Extension password cracking',
+                    '2. Bruteforce SSH',
+                    '3. Bruteforce Login (Support CSRF bypass)',
                     '4. Fuzzing',
-                    '5. Eavesdropping' ]
+                    '5. Extension password cracking',
+                    '6. Eavesdropping' ]
     }
     answers = prompt(step_prompt, style=custom_style_2)
     return answers['pentest']
@@ -104,30 +104,21 @@ def print_menu():
             if (pen_step == '1. Flood DDOS attack'):
                 print("Flood DDOS")
                 return 231
-            elif (pen_step == '2. Identity(Username/Password) Brute-force'):
+            elif (pen_step == '2. Bruteforce SSH'):
+                print("Bruteforce SSH")
+                return 232
+            elif (pen_step == '3. Bruteforce Login (Support CSRF bypass)'):
+                print("Bruteforce Login")
+                return 233
+            elif (pen_step == '4. Directory Fuzzing'):
                 print("Identity(Username/Password) Brute-force")
                 return 232
             elif (pen_step == '3. Extension password cracking'):
                 print("Extension password cracking")
-                return 233
-            elif (pen_step == '4. Fuzzing'):
-                print("Fuzzing")
-                return 234
-            elif (pen_step == '5. Eavesdropping'):
-                print("Eavesdropping")
                 return 235
-            # elif (pen_step == '6. Eavesdropping'):
-            #     print("Eavesdropping")
-            #     return 236
-            # elif (pen_step == '7. Fuzzing'):
-            #     print("Fuzzing")
-            #     return 237
-            # elif (pen_step == '8. Misconfiguration and default passwords'):
-            #     print("Misconfiguration and default passwords")
-            #     return 238
-            # elif (pen_step == '9. Eavesdropping'):
-            #     print("Eavesdropping")
-            #     return 239
+            elif (pen_step == '6. Eavesdropping'):
+                print("Eavesdropping")
+                return 236
 
         elif (step == '4. Generate a Report'):
             print("Generate a Report")
@@ -137,11 +128,7 @@ def print_menu():
             welcome_screen.banner('','',term_size.get_terminal_size("width"))
             print_menu()
 
-    elif (choose == '3. Option'):
-        print("Do third choice")
-        return 3
-
-    elif (choose == '4. Exit'):
+    elif (choose == '3. Exit'):
         clear.clrscr()
         print("See you again!!!")
-        return 4
+        return 3
