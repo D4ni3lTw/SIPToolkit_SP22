@@ -2,11 +2,11 @@ import requests
 import sys
 import json
 
-def get_vul_data(ip, data):
-    scan_data = data['scan']
+def get_vul_data(ip, data, port_cpe):
     dict_cpe = get_cpe_dictionary()
-    if scan_data is not None:
-        list_vul = []
+    list_vul = []
+    if data is not None and port_cpe is None:
+        scan_data = data['scan']
         if 'tcp' in scan_data[str(ip)]:
             tcp = scan_data[str(ip)]['tcp']
             portlist = list(tcp.keys())
@@ -34,8 +34,27 @@ def get_vul_data(ip, data):
                                         del vul['vulnerable_configuration_cpe_2_2']
                                     list_vul.append(vul)
                             break
+    elif data is None and port_cpe is not None:
+        if port_cpe != '':
+            cpe_arr = port_cpe.split(':')
+            cpe_arr.remove('cpe')
+            cpe_arr.remove('/a')
+            cpe_arr.pop(0)
+            cpe_rejoin = ':'.join(cpe_arr)
+            for cpe_item in dict_cpe:
+                if(cpe_rejoin in cpe_item):
+                    list_full_vul_data = get_api(cpe_item)
+                    for vul in list_full_vul_data:
+                        if type(vul) is dict:
+                            if('vulnerable_configuration' in vul):
+                                del vul['vulnerable_configuration']
+                            if('vulnerable_product' in vul):
+                                del vul['vulnerable_product']
+                            if('vulnerable_configuration_cpe_2_2' in vul):
+                                del vul['vulnerable_configuration_cpe_2_2']
+                            list_vul.append(vul)
+                    break
         return list_vul
-
 
 def get_cpe_dictionary():
     with open("data/cpe_dictionary/data.json", 'r', encoding='UTF-8') as file:
@@ -109,4 +128,4 @@ def print_data(result):
             print(" Impact Score 3: ", impactScore3)
             print(" Exploitability Score 3: ", exploitabilityScore3)
             print(" Summary: ", summary)
-
+            print()
