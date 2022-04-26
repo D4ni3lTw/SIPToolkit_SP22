@@ -60,8 +60,15 @@ def scan_by_each_ip(ip_addr, scanning_data, vul_data, pentest_data, template, sc
     rendered_pentest_data = ''
     if(len(pentest_data) > 0):
         for pentest in pentest_data:
-            rendered_pentest_data += render_pentest(
-                pentest['name'], pentest['value'])
+            if 'SSH' in pentest['name'] or 'Web Login' in pentest['name']:
+                rendered_pentest_data += render_pentest(
+                    pentest['name'], pentest['value'])
+            elif 'Fuzzing' in pentest['name']:
+                rendered_pentest_data += render_pentest_fuzzing(
+                    pentest['name'], pentest['value'])
+            elif 'Eavesdrop' in pentest['name']:
+                rendered_pentest_data += render_pentest_aevesdroping(
+                    pentest['name'], pentest['value']) 
     html = template.render(
         critical_count=critical_count,
         high_count=high_count,

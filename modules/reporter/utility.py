@@ -31,6 +31,23 @@ def render_pentest(name, value):
     return result
 
 
+def render_pentest_fuzzing(name, value):
+    body = ''
+    for item in value:
+        body += render_body(f"{item['url']}",
+                            f"(Status Code: {item['status_code']})")
+
+    result = render_information(name, body)
+    return result
+
+
+def render_pentest_aevesdroping(name, value):
+    result = render_information(name,
+                                render_body('Capture:', value['capture'] +
+                                            render_body('Audio:', value['audio'])))
+    return result
+
+
 def get_vul_data():
     with open("modules/reporter/vul_data.json", 'r', encoding='UTF-8') as file:
         result = json.loads(file.read())
