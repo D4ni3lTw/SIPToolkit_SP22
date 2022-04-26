@@ -33,7 +33,7 @@ def main_flow(choice):
             ip = str(input("Enter your IP address: ")).strip()
             if (ip_valid.validator(ip)):
                 scandata = scanning(ip)
-                vul_data = vulnassesst(ip, scandata)
+                vul_data = vulnassesst(ip, scandata, port_cpe=None)
                 print('------------------------------------------------')
                 input("Press Enter to continue to Pentest phase...")
                 pentest_data = exploit( ip, default_username_list, default_password_list, default_fuzzing_list)
