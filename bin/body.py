@@ -142,40 +142,9 @@ def main_flow(choice):
             console.error("Unexpected Error Occurred At Manual Directory Fuzzing!!!")
             sys.exit(1)
 
-    if (choice == 233):
-        try:
-            # print('Vishing')
-            print('Extension password cracking')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
-
-    if (choice == 234):
-        try:
-            # print('Identity(Username/Password) Bruteforce')
-            # ip = str(input('Target IP:'))
-            # usernames = str(input('Username wordlist:'))
-            # passwords = str(input('Password wordlist:'))
-            # bruteforce_login.bruteforcelogin(ip, usernames, passwords)
-            print('Fuzzing')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred!!!")
-            sys.exit(1)
-
     if (choice == 235):
         try:
-            # print('Extension password cracking')
-            print('Eavesdropping')
+            print('Extension password cracking')
             continue_step(choice)
         except Exception as e:
             console.error("An Error Occurred At Manual Extension Password Cracking!!!")
