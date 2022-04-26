@@ -67,15 +67,18 @@ def main_flow(choice):
 
     if (choice == 22):
         try:
+            print('Search vulnerability related to Common Platform Enumeration (CPE)')
+            print('CPE Format: cpe:/a:<vendor>:<product>:<version>')
             cpe = str(input("Enter cpe: "))
-            # vulnassesst(ip, cpe)
+            ip = '0.0.0.0'
+            vulnassesst(ip, scan_data=None, port_cpe=cpe)
             continue_step(choice)
         except Exception as e:
-            console.error("An Error Occurred!!!")
+            console.error("An Error Occurred At Manual Vulnerability Assessment!!!")
             console.error(e)
             sys.exit(1)
         except:
-            console.error("Unexpected Error Occurred!!!")
+            console.error("Unexpected Error Occurred At Manual Vulnerability Assessment!!!")
             sys.exit(1)
 
     if (choice == 231):
