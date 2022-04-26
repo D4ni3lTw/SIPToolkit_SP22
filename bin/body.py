@@ -144,18 +144,6 @@ def main_flow(choice):
 
     if (choice == 235):
         try:
-            print('Extension password cracking')
-            continue_step(choice)
-        except Exception as e:
-            console.error("An Error Occurred At Manual Extension Password Cracking!!!")
-            console.error(e)
-            sys.exit(1)
-        except:
-            console.error("Unexpected Error Occurred At Manual Extension Password Cracking!!!")
-            sys.exit(1)
-
-    if (choice == 236):
-        try:
             filename = str(input('Output Filename: '))
             eaves_timeout = int(input('Eavesdropping timeout: '))
             if filename != '' or eaves_timeout != '':
