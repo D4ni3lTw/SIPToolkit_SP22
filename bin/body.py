@@ -33,14 +33,17 @@ def main_flow(choice):
             ip = str(input("Enter your IP address: ")).strip()
             if (ip_valid.validator(ip)):
                 scandata = scanning(ip)
-                vul_data = vulnassesst(ip, scandata, port_cpe=None)
-                print('------------------------------------------------')
-                input("Press Enter to continue to Pentest phase...")
-                pentest_data = exploit( ip, default_username_list, default_password_list, default_fuzzing_list)
-                print(pentest_data)
-                report(scandata, vul_data, pentest_data)
-                console.success("Running cycle complete successfully!")
-                continue_step(choice)
+                if scandata['scan'][str(ip)]['status']['state'].lower() == 'down':
+                    print['[-] Host down']
+                    pass
+                else:
+                    vul_data = vulnassesst(ip, scandata, port_cpe=None)
+                    print('------------------------------------------------')
+                    input("Press Enter to continue to Pentest phase...")
+                    pentest_data = exploit( ip, default_username_list, default_password_list, default_fuzzing_list)
+                    report(scandata, vul_data, pentest_data)
+                    console.success("Running cycle complete successfully!")
+                    continue_step(choice)
             else:
                 console.error("Incorrect IP format!!!")
                 pass
